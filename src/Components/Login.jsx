@@ -1,47 +1,45 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../../src/style/login.css';  // Assuming this CSS is imported here
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; 
+import '../style/login.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (username === 'user' && password === 'password') {
+  const handleLogin = async (e) => {
+    e.preventDefault();  // Prevent default form submission behavior
+    try {
+      await login(email, password);
+      console.log("Login successful");
+      // Redirect user after successful login
       navigate('/home');
-    } else {
-      alert('Invalid Credentials');
+    } catch (error) {
+      setError("Invalid email or password");
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="form-container">
-        <h3>Welcome Back!</h3>
-        <form onSubmit={handleLogin}>
-          <label>Username</label>
-          <input 
-            type="text" 
-            placeholder="Enter Username" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-          />
-          
-          <label>Password</label>
-          <input 
-            type="password" 
-            placeholder="Enter Password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-          />
-          
-          <button type="submit">Login</button>
-        </form>
-
-        <p className="login-text">Don't have an account? <Link to="/signup">Sign Up</Link></p>
-      </div>
+    <div className='login-wrapper'>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </form>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../src/style/weather.css';  // Import the CSS
+import '../../src/style/weather.css';
 
-const Weather = ({ location }) => {
+const Weather = ({ location = "New York" }) => { // Default location added
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const apiKey = '0e6da7bbeb0432426ea751b0315a63a8';
@@ -10,9 +10,10 @@ const Weather = ({ location }) => {
   useEffect(() => {
     const fetchWeather = async () => {
       setLoading(true);
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`
+        );
         setWeatherData(response.data);
       } catch (error) {
         console.error(error);
@@ -25,7 +26,6 @@ const Weather = ({ location }) => {
   }, [location]);
 
   if (loading) return <div className="loading">Loading...</div>;
-
   if (!weatherData) return <div className="error">Weather data not available</div>;
 
   return (

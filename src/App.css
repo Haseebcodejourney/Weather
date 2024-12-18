@@ -1,0 +1,117 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* App Container */
+.app {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Weather Search */
+.weather-search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.weather-search input {
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 250px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.weather-search button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.weather-search button:hover {
+  background-color: #45a049;
+}
+
+/* Weather Card */
+.weather-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.weather-card h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.weather-card p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  color: #666;
+}
+
+.weather-card .temp {
+  font-size: 2.5rem;
+  color: #FF6F61;
+  font-weight: bold;
+}
+
+.weather-card .description {
+  text-transform: capitalize;
+  color: #777;
+}
+
+.weather-card .humidity {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Loading/Error States */
+.loading, .error {
+  color: #d9534f;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.no-data {
+  color: #6c757d;
+  font-size: 1.2rem;
+}

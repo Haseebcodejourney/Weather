@@ -1,2 +1,8 @@
-# Weather
-A feature-rich weather application powered by AI, designed to provide accurate and real-time weather updates. This repository contains the codebase for the AI Weather App, which utilizes machine learning and APIs to offer detailed weather forecasts, personalized recommendations, and location-based insights
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

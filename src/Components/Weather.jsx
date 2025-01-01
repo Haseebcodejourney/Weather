@@ -28,13 +28,33 @@ const Weather = ({ location = "New York" }) => { // Default location added
   if (loading) return <div className="loading">Loading...</div>;
   if (!weatherData) return <div className="error">Weather data not available</div>;
 
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const isGoodWeather = weatherData.weather[0].main === 'Clear' || weatherData.weather[0].main === 'Clouds';
+
   return (
-    <div className="weather-card">
-      <h2 className="city-name">{weatherData.name}</h2>
-      <h3 className="weather-description">{weatherData.weather[0].description}</h3>
-      <h4 className="temperature">{weatherData.main.temp}°C</h4>
-      <p className="humidity">Humidity: {weatherData.main.humidity}%</p>
-      <p className="wind-speed">Wind: {weatherData.wind.speed} m/s</p>
+    <div className='weather-card-wrapper'>
+      {days.map((day, index) => (
+        <div key={index} className="weather-card">
+          <h2 className="city-name"><span>{day.charAt(0)}</span>{day.slice(1)}</h2>
+          <div className='event-wrapper'>
+            <div className='event-box'>
+              <div><strong style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span className='green'></span>In-Door
+              </strong></div>
+              <br></br>
+              <span>Good</span>
+            </div>
+            <div className='event-box'>
+              <div><strong style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span className={isGoodWeather ? 'green' : 'red'}></span>Out-Door
+              </strong></div>
+              <br></br>
+              <span>{isGoodWeather ? 'Good' : 'Not Good'}</span>
+            </div>
+          </div>
+          <p className="temperature">{weatherData.main.temp}°C</p>
+        </div>
+      ))}
     </div>
   );
 };

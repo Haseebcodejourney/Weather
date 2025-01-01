@@ -37,6 +37,7 @@ const Home = () => {
   };
 
   return (
+    <>
     <div className="home-container">
       {/* <h1>Weather App</h1> */}
       
@@ -63,8 +64,10 @@ const Home = () => {
       </div>
 
       {/* Display weather info based on location */}
-      <Weather location={defaultLocation || 'London'} />
+   
     </div>
+       <Weather location={defaultLocation || 'London'} />
+       </>
   );
 };
 
